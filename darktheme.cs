@@ -7,9 +7,14 @@ public class DarkMode
     [DllImport("dwmapi.dll", EntryPoint = "DwmSetWindowAttribute")]
     private static extern int setAttributo(IntPtr hwnd, int attr, ref int valoreAttributo, int dimensioneAttributo);
 
-    public static void EnableDarkTitleBar(IntPtr handle)
+    public static void attivaDarkMode(IntPtr handle)
     {
         int usaDarkMode = 1;
         setAttributo(handle, attributo, ref usaDarkMode, sizeof(int));
     }
+}
+
+private void Form1_Load(object sender, EventArgs e)
+{
+   DarkMode.attivaDarkMode(this.Handle);
 }
